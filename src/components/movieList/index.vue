@@ -18,6 +18,7 @@
 </template>
 
 <script>
+    
     export default {
         name:'movieList',
         data(){
@@ -27,11 +28,12 @@
         },
         mounted(){
             this.axios.get('http://v.juhe.cn/movie/index?title=%E8%80%85&smode=0&pagesize=&offset=&dtype=&key=ab2a5e3fd3b625c9a7ac728b5c325f4f').then((res)=>{
-                var msg=res.data.result;
-                if(msg==='ok'){
-                    this.result=res.data.data.result;
+                var msg=res.data.statusText;
+                if(msg==='成功的返回'){
+                    var result=res.data.result;
+                    window.console.log(result)
                 }
-                
+                window.console.log(res.data)
             })
             
         }
